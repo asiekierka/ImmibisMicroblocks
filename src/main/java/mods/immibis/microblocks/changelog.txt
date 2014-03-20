@@ -1,0 +1,267 @@
+57.6.3:
+* Added a sanity check for microblocks with the wrong tile entity. A warning message will be printed to the console if one is detected.
+
+57.6.3P:
+* Possible fix for ClassCircularityError
+
+57.6.2:
+* Removed torches, chests, ender chests, ladders, flowerpots, signs and skulls from the default config settings,
+  because they caused too many problems with other mods.
+
+57.6.1:
+* Probably fixed crash on startup.
+
+57.6.0:
+* Added support for blocks that don't normally use tile entities, like torches.
+* Added by default: torches, chests (and trapped chests), ender chests, ladders, flowerpots, signs, skulls
+* Added compatibility with MCPC. Not tested. Added a config option to disable it in case it doesn't work.
+
+* Did not make glowstone microblocks glow, because that would let you get 32 times as much light from the same amount of glowstone. 
+* Did not add full-grass or rotatable grass microblocks because this mod should not add new block types.
+  These would be appropriate for a new mod though.
+
+* Known bug: place a microblock on a torch, then push it with a piston. Both the microblock and the torch will be destroyed!
+
+57.5.0:
+* Microblocks prevent Buildcraft pipe connections. This can be disabled in the config file.
+
+57.4.1:
+* Now plays a sound when placing microblocks.
+
+57.4.0:
+* If a block throws an error during auto-detection it will be printed, but will not crash or break auto-detection (that block will be ignored instead).
+* Added basic support for something asiekierka is working on. Technical details in <jar file>/mods/immibis/microblocks/changelog.txt.
+  Technical details:
+    TE classes that are not using the full Immibis's Microblocks API, but want a basic level of extra functionality, can define these optional methods:
+      boolean ImmibisMicroblocks_isSideOpen(int side) {return true;}
+      void ImmibisMicroblocks_onMicroblocksChanged() {/* stuff goes here */}
+    Access modifier is irrelevant, but they must not be static.
+    
+    The transformer will fill in ImmibisMicroblocks_isSideOpen so that it returns false if a microblock is blocking connections on that side of this block.
+    It will also make sure ImmibisMicroblocks_onMicroblocksChanged is called whenever microblocks are added or removed.
+    
+    If a class defines these methods, but is not a tile entity class listed in the config file, it will not be affected.
+    
+    Also, mod classes can define a field called ImmibisMicroblocks_TransformableTileEntityMarker or ImmibisMicroblocks_TransformableBlockMarker
+    to be recognized as if they were listed in the config file. The access modifiers, type, and value of the field do not matter - only the name.
+
+57.3.3:
+* Fixed "java.lang.RuntimeException: Error at instruction 4: Insufficient maximum stack size. func_71921_a(Lnet/minecraft/world/World;IIILnet/minecraft/entity/player/EntityPlayer;)V"
+* Fixed particles when punching microblocks placed on blocks set in the config file.
+
+57.3.2:
+* Probably fixed NullPointerException when auto-detecting with FMP installed.
+
+57.3.1:
+* Probably fixed "MicroblockSupporterTransformer cannot be used on this block" happening on most blocks.
+
+57.3.0:
+* Fixed compatibility with TE3.
+
+57.2.3:
+* Fixed crash on startup on servers (thanks asie for pointing this out)
+
+57.2.2:
+* Removed debug spam.
+
+57.2.1:
+* Fixed particles when microblocks are broken.
+* Fixed grass block side textures being squashed vertically in some positions.
+* Removed particles when microblocks are sprinted on, because there doesn't seem to be a way to fix them.
+* Fixed rendering of grass hollow covers/panels/slabs.
+* Fixed transparency of part previews.
+* Fixed "java.lang.NoClassDefFoundError: net/minecraft/client/renderer/RenderBlocks at mods.immibis.microblocks.coremod.MSTHooks.overrideRenderType(MSTHooks.java:20)" on servers.
+
+57.2.0:
+* Sides that line up with the block grid should have seamless smooth lighting.
+  Sides that don't (e.g. the "inside" of covers) might not.
+* Added grass, oak leaf, birch leaf, spruce leaf and jungle leaf microblocks.
+
+57.1.1:
+* Should fix a potential crash on servers related to Bibliocraft. (http://pastebin.com/ACSn0k9p)
+
+57.1.0:
+* Better client-side prediction (for SMP).
+* Contains incompatible API changes - requires update to Immibis Core.
+
+57.0.1:
+* Another attempt at fixing resource loading.
+
+57.0.0:
+* Updated to Minecraft 1.6.4.
+* Still haven't got a reply from cpw, so didn't fix textures and names.
+
+56.0.5:
+* Probably fixed problems with updated Forge.
+
+56.0.4:
+* Re-added NEI plugin.
+* Fixed crash with ACT2 when BC is not installed?
+* Fixed crash with buffer when BC is not installed in SMP?
+* Didn't fix buffer not working with pipes, yet.
+
+56.0.3:
+* Added a special case for placing strips that overlap covers, so you can make tables in one block.
+
+56.0.2:
+* Fixed config not generating properly causing microblocks to not work on anything.
+  If you have this problem go to immibis-microblocks.cfg and delete all the blockClass and tileEntityClass lines, or remove the -.
+
+56.0.1:
+* Fixed crash on startup with Immibis Core 56.0.2.
+
+56.0.0:
+* Updated to Minecraft 1.6.2.
+* Now fully translatable.
+* Removed NEI integration because NEI isn't updated yet.
+
+55.0.8:
+* Fixed "Too late to request IDs, use pre-init"
+
+55.0.7:
+* Fixed microblock-supporting blocks such as RedLogic wire not being allowed to move in MFFS frames.
+* Fixed wire connecting through hollow covers.
+
+55.0.6:
+* Updated RedNet class names.
+* Changed the way class names are in the config so you won't have to keep updating your config.
+* For other modders:
+  - If a class contains a field called ImmibissMicroblocks_TransformableBlockMarker it will act as if it was specified in the config as a block class.
+  - Use ImmibissMicroblocks_TransformableTileEntityMarker for tile entity classes.
+
+55.0.5:
+* Maybe fixed CC cable crash.
+* Fixed microblocks not rendering in your hand in first person.
+
+55.0.4:
+* Fixed not being able to combine parts based on blocks with IDs over 2048.
+
+55.0.3:
+* Added an API feature required to fix a bug in RedLogic.
+
+55.0.2:
+* Microblocks no longer tick. This is a performance increase, but possibly too small to notice.
+* Fixed a bug related to block updates that affects RedLogic.
+
+55.0.1:
+* Added stone slab microblocks, with silly names.
+* Re-added conduits and liquiducts since King_Lemming undid the thing he did before.
+* Probably fixed microblocks sometimes not loading in multiplayer.
+
+55.0.0:
+* Updated to Minecraft 1.5.2.
+* Took TE conduits and liquiducts off the list until I find a way around the problem.
+  This will delete any covers you have on those blocks, sorry!
+  
+  When updating delete 
+		thermalexpansion.block.conduit.BlockConduit
+		thermalexpansion.block.conduit.TileConduitEnergy
+		thermalexpansion.block.conduit.TileConduitLiquid
+  from immibis-microblocks.cfg or you will crash when moving the mouse over a conduit or liquiduct.
+  (This also applies to 1.5.1 users)
+
+54.0.9:
+* Nonexistent cuttableBlocks will be ignored and log a warning.
+
+54.0.8:
+* Added parts from the following vanilla blocks:
+  Cracked/mossy/chiseled stone brick
+  Block of redstone
+  Nether quartz ore
+  Normal/chiseled/pillar quartz block
+  Dropper
+* Auto-detect won't crash if there are two blocks with the same ID and metadata and different NBT.
+
+54.0.7:
+* Updated class names in default config, thanks to DoctorOr.
+* Added GalactiCraft oxygen pipes to default config, thanks to DoctorOr again. Untested.
+* Fixed a bug causing crashes when used on ComputerCraft cables.
+
+54.0.6:
+* Eliminated or greatly reduced flickering when two different-textured covers overlap.
+
+54.0.5:
+* Fixed autodetect not working and not resetting.
+* Removed debug messages.
+
+54.0.4:
+* Fixed a warning when loading textures (it was harmless but still printed a warning).
+* Added some debug messages when saving and loading the config file.
+
+54.0.3:
+* Fixed breaking a microblock not causing a block update (allowing things like floating torches).
+* Fixed the incompatibility with Buildcraft.
+
+54.0.2:
+* Maybe fixed the crash with Buildcraft installed.
+
+54.0.1:
+* Fixed upside-down textures on sides.
+* Fixed names.
+* Textures on all sides are displayed the same way as in normal blocks - none are flipped horizontally.
+* Fixed some lighting differences between microblocks and normal blocks. Still no smooth lighting.
+
+54.0.0:
+* Updated to Minecraft 1.5.1.
+
+53.0.0:
+* Fixed wrong name in mod list.
+* Updated to Minecraft 1.5.
+* New bug: when breaking a microblock, particles have "missing texture" texture.
+
+52.1.3:
+* Added AE colourless cable to default tile entity list. Class is appeng.me.tile.TileColorlessCable
+
+52.1.2:
+* Refactored microblock API again - required update.
+* Fixed a bug with config generation the first time you open Minecraft.
+* Fixed mod page crash with NEI?
+
+52.1.1:
+* Added config option to hide microblocks from NEI, because I'm told ChickenBones still hasn't fixed the lag.
+* Might fix not being able to mark Forestry planks as cuttable.
+
+52.1.0:
+* Fixed bottom and sides of microblocks not being darker than the top.
+* Fixed transformed blocks being black in inventories.
+* Config format changed and config file renamed to immibis-microblocks.cfg.
+  Existing configs will be automatically converted.
+* Changed the way autoDetectCuttableBlocks works.
+* Added manual cuttableBlock list in config.
+* Added support for mods that mix coverable and non-coverable tile entities in the same block ID (eg Applied Energistics)
+* Added the following Applied Energistics blocks to the default list: ME Cable, ME Export Bus, ME Import Bus, ME Level Emitter,
+  ME Storage Bus, ME Dark Cable.
+  With the Export Bus, Import Bus and Storage Bus you can place covers on the same side the bus is on, causing flickering.
+  So don't do that if it annoys you.
+* You can no longer craft a microblock by itself to get the same one back.
+
+52.0.9:
+* Fixed flickering on overlapping microblocks with the same texture (yay!)
+  They still flicker if the overlapping microblocks have different textures.
+* Fixed some stacking issues.
+
+52.0.8:
+* Included microblock API in this jar file, as well as immibis core (as I can't remove it from there until 1.5).
+  Maybe this fixes the IC2 load order problem.
+
+52.0.7:
+* Re-added IC2 cables to the default list of blocks to affect.
+
+52.0.6:
+* Probably fixed NPE when loading a world or connecting to a server.
+* New handsaw sprite from Kaza, slightly modified (just the blade). Thanks Kaza!
+
+52.0.5:
+* Fixed dupe bug with Buildcraft pipes.
+* Fixed selection boxes not rendering.
+* Fixed placement ghosts not rendering.
+
+52.0.3:
+* Middle-clicking a microblock placed on a cable/conduit/liquiduct/pipe in creative will select the microblock, instead of the thing it's on.
+* You can place torches, etc, attached to microblocks on cables/conduits/liquiducts/pipes.
+
+52.0.0:
+* Separated microblocks into a separate coremod like they should have been from the start.
+  You don't need to update configs. You do need to download Immibis's Microblocks if you
+  had microblocks enabled, or they will disappear from the world.
+  The API is still in Immibis Core.

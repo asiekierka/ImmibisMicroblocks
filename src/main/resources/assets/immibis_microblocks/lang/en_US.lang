@@ -1,0 +1,36 @@
+item.immibis_microblocks.saw.name=Hacksaw
+tile.immibis_microblocks.container.name=Microblock Container Block
+
+immibis_microblocks.nei.subset=Blocks.Microblocks
+
+immibis_microblocks.nameformat.0=%1$s Cover
+immibis_microblocks.nameformat.1=%1$s Panel
+immibis_microblocks.nameformat.2=%1$s Triple Cover
+immibis_microblocks.nameformat.3=%1$s Slab
+immibis_microblocks.nameformat.4=%1$s Cover Slab
+immibis_microblocks.nameformat.5=%1$s Triple Panel
+immibis_microblocks.nameformat.6=%1$s Anticover
+
+immibis_microblocks.nameformat.8=%1$s Cover Strip
+immibis_microblocks.nameformat.9=%1$s Panel Strip
+immibis_microblocks.nameformat.10=%1$s Triple Cover Strip
+immibis_microblocks.nameformat.11=%1$s Slab Strip
+immibis_microblocks.nameformat.12=%1$s Cover Slab Strip
+immibis_microblocks.nameformat.13=%1$s Triple Panel Strip
+immibis_microblocks.nameformat.14=%1$s Anticover Strip
+
+immibis_microblocks.nameformat.16=%1$s Cover Corner
+immibis_microblocks.nameformat.17=%1$s Panel Corner
+immibis_microblocks.nameformat.18=%1$s Triple Cover Corner
+immibis_microblocks.nameformat.19=%1$s Slab Corner
+immibis_microblocks.nameformat.20=%1$s Cover Slab Corner
+immibis_microblocks.nameformat.21=%1$s Triple Panel Corner
+immibis_microblocks.nameformat.22=%1$s Anticover Corner
+
+immibis_microblocks.nameformat.24=Hollow %1$s Cover
+immibis_microblocks.nameformat.25=Hollow %1$s Panel
+immibis_microblocks.nameformat.26=Hollow %1$s Triple Cover
+immibis_microblocks.nameformat.27=Hollow %1$s Slab
+immibis_microblocks.nameformat.28=Hollow %1$s Cover Slab
+immibis_microblocks.nameformat.29=Hollow %1$s Triple Panel
+immibis_microblocks.nameformat.30=Hollow %1$s Anticover
