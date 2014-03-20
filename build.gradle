@@ -68,3 +68,26 @@ task deobfJar(type: Jar) {
         attributes 'FMLCorePluginContainsFMLMod': 'true'
     }
 }
+
+task apiJar(type: Jar) {
+    from sourceSets.main.java
+    classifier = 'api'
+    include 'mods/immibis/microblocks/api/**'
+}
+
+apply plugin: 'maven-publish'
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            artifact jar
+            artifact deobfJar
+            artifact apiJar
+        }
+    }
+    repositories {
+        maven {
+            url "${config.maven.url}"
+        }
+    }
+}
